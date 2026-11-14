@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="PauliLife — mapa público de denúncias ambientais em Paulínia."
+    >
+    <title>PauliLife | Denúncias ambientais</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">🍃</span>
+            <span><strong>PauliLife</strong></span>
+        </a>
+
+        <nav class="nav-links" aria-label="Navegação principal">
+            <a href="#sobre">Sobre</a>
+            <a href="#mapa">Mapa de denúncias</a>
+            <a href="#denunciar">Denunciar</a>
+            <a href="#contatos">Contattos</a>
+        </nav>
+
+        <div class="account-actions" id="account-actions">
+            <a class="btn btn-outline btn-small" href="login.html">
+                Entrar
+            </a>
+            <a class="btn btn-primary btn-small" href="cadastro.html">
+                Criar conta
+            </a>
+        </div>
+
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p>
+                    Consulte no mapa as denúncias ambientais registradas pelos moradores.
+                </p>
+                <div class="hero-actions">
+                    <a href="#denunciar" class="btn btn-primary">
+                        Fazer uma denúncia
+                        <span aria-hidden="true">→</span>
+                    </a>
+                    <a href="#mapa" class="btn btn-light">
+                        Ver mapa
+                    </a>
+                </div>
+                <p class="hero-note">
+                    Projeto comunitário e acadêmico.
+                </p>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="sun"></div>
+                <div class="hill hill-back"></div>
+                <div class="hill hill-front"></div>
+                <div class="leaf leaf-one">🍃</div>
+                <div class="leaf leaf-two">🍃</div>
+                <div class="hero-stat">
+                    <strong id="hero-total">—</strong>
+                    <span>denúncias registradas</span>
+                </div>
+
+            </div>
+
+        </section>
+        <section class="section about-section" id="sobre">
+
+            <div class="section-heading">
+                <span class="eyebrow">
+                    NOSSO PROPÓSITO
+                </span>
+                <p>
+                    O PauliLife agrupa as denúncias ambientais feita pelos moradores e as mostra no mapa
+                </p>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <span class="feature-icon">📍</span>
+                    <h3>Mapa aberto</h3>
+                    <p>
+                        Qualquer visitante pode consultar as denúncias.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">👥</span>
+
+                    <h3>Participação comunitária</h3>
+
+                    <p>
+                        Moradores cadastrados podem registrar denúncias com nome, e-mail e senha.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-icon">💚</span>
+
+                    <h3>Facil acompanhamento</h3>
+                </article>
+
+            </div>
+
+        </section>
+        <section class="section map-section" id="mapa">
+
+            <div class="section-title-row">
+
+                <div>
+                    <span class="eyebrow">
+                        CONSULTA PÚBLICA
+                    </span>
+
+                    <h2>Mapa de denúncias</h2>
+
+                    <p>
+                        Todos podem visualizar as denúncias. 
+                    </p>
+                </div>
+
+                <div class="map-legend">
+                    <span>
+                        <i class="legend-dot dot-open"></i>
+                        Recebida
+                    </span>
+
+                    <span>
+                        <i class="legend-dot dot-done"></i>
+                        Concluída
+                    </span>
+                </div>
+
+            </div>
+            <div
+                id="mapa-paulina"
+                class="map-frame"
+                role="application"
+                aria-label="Mapa público de denúncias ambientais em Paulínia"
+            ></div>
+
+            <p class="map-help">
+                As localizações são apenas aproximações
+                Os denuncias não representam uma garantia de verifição oficial.
+            </p>
+
+        </section>
+        <section class="section report-section" id="denunciar">
+
+            <div class="report-intro">
+
+                <span class="eyebrow">
+                    PARTICIPE
+                </span>
+
+                <h2>Quer denunciar algo?</h2>
+
+                <p>
+                    Escolha o tipo de ocorrência e marque o local aproximado no mapa:
+                </p>
+
+                <div class="report-callout">
+                    <strong>Tipos de denúncia aceitos</strong>
+
+                    <span>
+                        Descarte de lixo em locala irregular / Poluição de lagos e rios / Queimadas
+                    </span>
+                </div>
+            </div>
+            <div class="report-panel" id="report-panel">
+                <div id="report-login-prompt" class="login-prompt">
+                    <div class="prompt-icon">📁</div>
+                    <h3>Entre para fazer sua denuncia</h3>
+                    <p>
+                        O cadastro pede seu nome, e-mail e uma senha.
+                    </p>
+
+                    <div class="stack-actions">
+
+                        <a
+                            class="btn btn-primary btn-full"
+                            href="login.html"
+                        >
+                            Entrar na minha conta
+                        </a>
+
+                        <a
+                            class="btn btn-outline btn-full"
+                            href="cadastro.html"
+                        >
+                            Criar uma conta
+                        </a>
+
+                    </div>
+                </div>
+
+                <form id="form-denuncia" class="report-form hidden">
+
+                    <div class="form-heading">
+
+                        <div>
+                            <span class="eyebrow">
+                                NOVA DENÚNCIA
+                            </span>
+
+                            <h3>Registrar ocorrência</h3>
+                        </div>
+
+                        <span class="signed-user" id="signed-user"></span>
+                    </div>
+                    <label for="categoria">
+                        Tipo de ocorrência
+                    </label>
+
+                    <select id="categoria" required>
+                        <option value="">Selecione uma opção</option>
+                        <option>Descarte irregular de lixo</option>
+                        <option>Poluição da água</option>
+                        <option>Queimada</option>
+                    </select>
+                    <div class="location-box">
+                        <div>
+                            <strong>Local da ocorrência</strong>
+                            <span id="local-selecionado">
+                                Clique no mapa para marcar o local aproximado.
+                            </span>
+                        </div>
+                        <button
+                            class="text-button"
+                            type="button"
+                            id="limpar-local"
+                        >
+                            Limpar
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary btn-full"
+                        type="submit"
+                        id="btn-enviar"
+                    >
+                        Enviar
+                    </button>
+
+                    <p class="form-footnote">
+                        .
+                    </p>
+
+                    <div
+                        class="message"
+                        id="report-message"
+                        role="status"
+                    ></div>
+                </form>
+            </div>
+        </section>
+
+        <section class="section contacts-section" id="contatos">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">
+                    CANAIS DE ATENDIMENTO
+                </span>
+                <h2>atendimento oficial:</h2>
+
+                <p>
+                    Se quiser solicitar providências, utilize os canais oficiais
+                    da Prefeitura da cidade e de outros órgãos públicos.
+                </p>
+
+            </div>
+
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <span class="contact-symbol">🗝️</span>
+                    <h3>Prefeitura de Paulínia</h3>
+                    <a
+                        href="https://www.paulinia.sp.gov.br/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Portal oficial da Prefeitura ↗
+                    </a>
+                </article>
+                <article class="contact-card">
+                    <span class="contact-symbol">🚨</span>
+                    <h3>Defesa Civil</h3>
+                    <strong>199 — Defesa Civil</strong>
+
+                </article>
+                <article class="contact-card">
+
+                    <span class="contact-symbol">🌿</span>
+
+                    <h3>Órgãos ambientais</h3>
+                    <a
+                        href="https://www.cetesb.sp.gov.br/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        CETESB — portal oficial ↗
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+
+        <a class="brand brand-footer" href="index.html">
+            <span class="brand-mark">🍃</span>
+            <span><strong>PauliLife</strong></span>
+        </a>
+        <p>
+            Projeto acadêmico.
+        </p>
+
+        <span>
+            © <span id="ano"></span> PauliLife
+        </span>
+
+    </footer>
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/mapa.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

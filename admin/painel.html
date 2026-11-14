@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel administrativo | PauliLife</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">♻</span>
+            <span><strong>PauliLife</strong></span>
+        </a>
+        <div class="sidebar-label">
+            ADMINISTRAÇÃO
+        </div>
+
+        <a class="sidebar-link active" href="#ocorrencias">
+            ☷
+            <span>Denúncias</span>
+        </a>
+
+        <a class="sidebar-link" href="../index.html">
+            ↗
+            <span>Ver site público</span>
+        </a>
+        <div class="sidebar-bottom">
+            <span class="admin-avatar">A</span>
+            <div>
+                <strong id="admin-username">
+                    Administrador
+                </strong>
+
+                <small>
+                    Conta administrativa
+                </small>
+            </div>
+            <button
+                class="icon-button"
+                id="logout-button"
+                title="Sair"
+                aria-label="Sair"
+            >
+                ⇥
+            </button>
+        </div>
+    </aside>
+    <main class="admin-main">
+        <header class="admin-topbar">
+
+            <div>
+                <span class="eyebrow">
+                    ÁREA RESTRITA
+                </span>
+                <h1>Painel de denúncias</h1>
+                <p>
+                    Consulte os registros.
+                </p>
+            </div>
+            <span class="admin-secure">
+                ● Acesso exclusivo
+            </span>
+        </header>
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>Total de denúncias</span>
+                <strong id="stat-total">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>Recebidas</span>
+                <strong id="stat-open">—</strong>
+            </article>
+
+            <article class="stat-card">
+                <span>Concluídas</span>
+                <strong id="stat-done">—</strong>
+            </article>
+
+        </section>
+        <section
+            class="admin-list-section"
+            id="ocorrencias"
+        >
+            <div class="admin-list-heading">
+                <div>
+                    <h2>Denúncias registradas</h2>
+                    <p>
+                        O nome de quem registrou e o local aproximado
+                    </p>
+                </div>
+                <button
+                    class="btn btn-outline btn-small"
+                    id="refresh-button"
+                >
+                    ↻ Atualizar
+                </button>
+            </div>
+            <div
+                class="admin-message"
+                id="admin-message"
+                role="status"
+            ></div>
+            <div
+                id="reports-admin-list"
+                class="reports-admin-list"
+            >
+                <div class="loading-state">
+                    Carregando denúncias
+                </div>
+            </div>
+        </section>
+        <footer class="admin-footer">
+            PauliLife · Área administrativa ·
+            <a href="../index.html">
+                Voltar ao site
+            </a>
+        </footer>
+    </main>
+    <dialog
+        class="email-review-dialog"
+        id="email-review-dialog"
+        aria-labelledby="email-review-title"
+    >
+        <div class="email-review-header">
+            <div>
+                <span class="eyebrow">
+                    ENCAMINHAMENTO MANUAL
+                </span>
+
+                <h2 id="email-review-title">
+                    Revisar denúncia
+                </h2>
+            </div>
+            <button
+                type="button"
+                class="dialog-close"
+                id="close-email-dialog"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+        </div>
+        <p class="email-review-notice">
+            Confira o destinatário.
+            O PauliLife apenas prepara o e-mail; ele só será enviado
+            quando você clicar em <strong>Enviar</strong>
+            em seu e-mail.
+        </p>
+        <div
+            class="email-report-summary"
+            id="email-report-summary"
+        ></div>
+        <label for="email-to">
+            Destinatário
+        </label>
+        <input
+            id="email-to"
+            type="email"
+            value="seddema@paulinia.sp.gov.br"
+            required
+            autocomplete="off"
+        >
+        <label for="email-subject">
+            Assunto
+        </label>
+
+        <input
+            id="email-subject"
+            type="text"
+            maxlength="180"
+            required
+        >
+        <label for="email-body">
+            Mensagem
+        </label>
+        <textarea
+            id="email-body"
+            rows="10"
+            required
+        ></textarea>
+        <div class="email-review-actions">
+
+            <button
+                type="button"
+                class="btn btn-outline"
+                id="copy-email-button"
+            >
+                Copiar assunto e mensagem
+            </button>
+            <button
+                type="button"
+                class="btn btn-primary"
+                id="open-email-button"
+            >
+                Abrir e-mail para enviar
+            </button>
+
+        </div>
+        <div
+            class="email-draft-message"
+            id="email-draft-message"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <p class="email-review-footnote">
+            O envio do e-mailnão é realizado automaticamente,.
+            O PauliLife apenas prepara o e-mail;
+    </dialog>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
